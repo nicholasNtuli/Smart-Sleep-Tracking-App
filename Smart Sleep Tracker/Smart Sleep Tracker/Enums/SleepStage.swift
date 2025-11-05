@@ -8,7 +8,7 @@
 import Foundation
 
 public enum SleepStage: String, Codable {
-    case awak = "Awake"
+    case awake = "Awake"
     case light = "Light Sleep"
     case deep = "Deep Sleep"
     case rem = "REM Sleep"

@@ -24,10 +24,10 @@ public struct SleepSession {
     public var remsleepDuration: TimeInterval = 0
     public var awakening: Int = 0
     public var heartRateAverage: Double?
-//    public var accelermeterData: [] = []
-//    public var audioBreathingData: [] = []
-//    public var sleepStages: [] = []
-//    public var environmentalData: [] = []
+    public var accelermeterData: [AccelerometerReading] = []
+    public var audioBreathingData: [BreathingReading] = []
+    public var sleepStages: [SleepStageData] = []
+    public var environmentalData: EnvironmentalData?
     public var averageBreathingRate: Double = 0
     
     public init(startTime: Date = Date()) {
