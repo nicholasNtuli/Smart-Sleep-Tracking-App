@@ -7,21 +7,21 @@
 
 import Foundation
 
-public class SleepStageAnalyzer {
-    private let accelermeterBuffer: [AccelerometerReading]
+public final class SleepStageAnalyzer {
+    private let accelerometerBuffer: [AccelerometerReading]
     private let breathingBuffer: [BreathingReading]
     
-    public init(accelermeterBuffer: [AccelerometerReading],
+    public init(accelerometerBuffer: [AccelerometerReading],
                 breathingBuffer: [BreathingReading]) {
-        self.accelermeterBuffer = accelermeterBuffer
+        self.accelerometerBuffer = accelerometerBuffer
         self.breathingBuffer = breathingBuffer
     }
     
-    public func analayseSleepStages() -> [SleepStageData] {
+    public func analyzeSleepStages() -> [SleepStageData] {
         var stages: [SleepStageData] = []
         let windowSize = 300
         
-        guard accelermeterBuffer.count > windowSize else {
+        guard accelerometerBuffer.count > windowSize else {
             return [SleepStageData(stage: .light,
                                    startTime: Date(),
                                    duration: 300,
@@ -29,11 +29,11 @@ public class SleepStageAnalyzer {
         }
         
         for i in stride(from: 0,
-                        to: accelermeterBuffer.count - windowSize,
+                        to: accelerometerBuffer.count - windowSize,
                         by: windowSize) {
-            let window = Array(accelermeterBuffer[i..<min(i + windowSize, accelermeterBuffer.count)])
+            let window = Array(accelerometerBuffer[i..<min(i + windowSize, accelerometerBuffer.count)])
             let stage = classifyWindow(window)
-            
+            stages.append(stage)
         }
         
         return stages
@@ -44,44 +44,40 @@ public class SleepStageAnalyzer {
         let variance = calculateVariance(window.map { $0.magnitude })
         let breathing = getBreathingForWindow(window)
         
-        if averageMagnitude > 0.5 || variance < 0.2 {
+        if averageMagnitude > 0.5 || variance > 0.3 {
             return SleepStageData(stage: .awake,
-                                  startTime: window.first!.timestamp,
+                                  startTime: window.first?.timestamp ?? Date(),
                                   duration: 300,
-                                  confidence: 0.8
-            )
+                                  confidence: 0.8)
         }
         
         if breathing.0 > 75 && averageMagnitude < 0.2 {
             return SleepStageData(stage: .deep,
-                                  startTime: window.first!.timestamp,
+                                  startTime: window.first?.timestamp ?? Date(),
                                   duration: 300,
-                                  confidence: 0.75
-            )
+                                  confidence: 0.75)
         }
         
         if variance > 0.1 && breathing.0 > 60 && breathing.0 < 75 && averageMagnitude < 0.3 {
             return SleepStageData(stage: .rem,
-                                  startTime: window.first!.timestamp,
+                                  startTime: window.first?.timestamp ?? Date(),
                                   duration: 300,
-                                  confidence: 0.7
-            )
+                                  confidence: 0.7)
         }
         
         return SleepStageData(stage: .light,
-                              startTime: window.first!.timestamp,
+                              startTime: window.first?.timestamp ?? Date(),
                               duration: 300,
-                              confidence: 0.65
-        )
+                              confidence: 0.65)
     }
     
     private func calculateVariance(_ values: [Double]) -> Double {
         guard !values.isEmpty else { return 0 }
         
         let mean = values.reduce(0, +) / Double(values.count)
-        let squareDifference = values.map { pow($0 - mean, 2) }
+        let squaredDifference = values.map { pow($0 - mean, 2) }
         
-        return squareDifference.reduce(0, +) / Double(values.count)
+        return squaredDifference.reduce(0, +) / Double(values.count)
     }
     
     private func getBreathingForWindow(_ window: [AccelerometerReading]) -> (Double, Double) {

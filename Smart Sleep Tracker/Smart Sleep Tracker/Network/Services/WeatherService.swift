@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class WeatherService {
+final class WeatherService {
     static let shared = WeatherService()
     private init() {}
     
@@ -18,7 +18,7 @@ public class WeatherService {
         self.apiKey = apiKey
     }
     
-    func fetchCurrentWeather(latitude: Double, longitue: Double, completion: @escaping (Result<EnvironmentalData, Error>) -> Void) {
+    func fetchCurrentWeather(latitude: Double, longitude: Double, completion: @escaping (Result<EnvironmentalData, Error>) -> Void) {
         guard !apiKey.isEmpty else {
             completion(.failure(SleepNetError.badURL))
             return
@@ -29,7 +29,7 @@ public class WeatherService {
         
         components?.queryItems = [
             URLQueryItem(name: "key", value: apiKey),
-            URLQueryItem(name: "q", value: "\(latitude),\(longitue)"),
+            URLQueryItem(name: "q", value: "\(latitude),\(longitude)"),
             URLQueryItem(name: "aqi", value: "no")
         ]
         

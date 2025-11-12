@@ -23,18 +23,18 @@ public class BreathingAnalyzer {
         let audioArray = Array(UnsafeBufferPointer(start: channelData, count: frameLength))
         
         let breathingFrequency = extractBreathingFrequency(audioArray)
-        let reularity = calculateBreathingRegularity(audioArray)
+        let regularity = calculateBreathingRegularity(audioArray)
         let amplitude = calculateAmplitude(audioArray)
         
         let reading = BreathingReading(
             timestamp: Date(),
             frequency: breathingFrequency,
             amplitude: amplitude,
-            regularity: reularity
+            regularity: regularity
         )
         
         breathingReadings.append(reading)
-        return []
+        return breathingReadings
     }
 
     /// Estimates a person’s breathing rate (in breaths per minute)

@@ -8,11 +8,11 @@
 import Foundation
 
 public struct SleepSession {
-    // constatnts
+    // Constants
     public let id: String
     public let startTime: Date
     
-    // variables
+    // Variables
     public var endTime: Date?
     public var duration: TimeInterval {
         let end = endTime ?? Date()
@@ -20,11 +20,11 @@ public struct SleepSession {
     }
     public var sleepQuality: Int?
     public var deepSleepDuration: TimeInterval = 0
-    public var lightSleepduration: TimeInterval = 0
-    public var remsleepDuration: TimeInterval = 0
-    public var awakening: Int = 0
+    public var lightSleepDuration: TimeInterval = 0
+    public var remSleepDuration: TimeInterval = 0
+    public var awakenings: Int = 0
     public var heartRateAverage: Double?
-    public var accelermeterData: [AccelerometerReading] = []
+    public var accelerometerData: [AccelerometerReading] = []
     public var audioBreathingData: [BreathingReading] = []
     public var sleepStages: [SleepStageData] = []
     public var environmentalData: EnvironmentalData?

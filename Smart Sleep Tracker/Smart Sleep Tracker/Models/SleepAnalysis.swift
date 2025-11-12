@@ -25,12 +25,12 @@ public struct SleepAnalysis {
         self.duration = session.duration
         self.stageBreakdown = session.sleepStages
         
-        let totalSleeptime = session.deepSleepDuration + session.lightSleepduration + session.remsleepDuration + Double(session.awakening) * 5
+        let totalSleepTime = session.deepSleepDuration + session.lightSleepDuration + session.remSleepDuration + Double(session.awakenings) * 5
         
-        self.deepSleepPercentage = totalSleeptime > 0 ? (session.deepSleepDuration / totalSleeptime) * 100 : 0
-        self.lightSleepPercentage = totalSleeptime > 0 ? (session.lightSleepduration / totalSleeptime) * 100 : 0
-        self.remSleepPercentage = totalSleeptime > 0 ? (session.remsleepDuration / totalSleeptime) * 100 : 0
-        self.awakePercentage = totalSleeptime > 0 ? (Double(session.awakening) * 5 / totalSleeptime) * 100 : 0
+        self.deepSleepPercentage = totalSleepTime > 0 ? (session.deepSleepDuration / totalSleepTime) * 100 : 0
+        self.lightSleepPercentage = totalSleepTime > 0 ? (session.lightSleepDuration / totalSleepTime) * 100 : 0
+        self.remSleepPercentage = totalSleepTime > 0 ? (session.remSleepDuration / totalSleepTime) * 100 : 0
+        self.awakePercentage = totalSleepTime > 0 ? (Double(session.awakenings) * 5 / totalSleepTime) * 100 : 0
         
         self.averageBreathingRate = session.averageBreathingRate
         
@@ -39,16 +39,16 @@ public struct SleepAnalysis {
         
         var qualityScore = 50
         
-        let hours = session.duration / 360
+        let hours = session.duration / 3600
         if hours >= 7 && hours <= 9 {
             qualityScore += 30
-        } else if hours < 6.5 {
+        } else if hours >= 6.5 && hours < 7 {
             qualityScore += 15
         } else if hours > 9 && hours <= 10 {
             qualityScore += 15
         }
         
-        qualityScore -= min(session.awakening * 5, 20)
+        qualityScore -= min(session.awakenings * 5, 20)
         
         if deepSleepPercentage >= 13 && deepSleepPercentage <= 23 {
             qualityScore += 15
@@ -75,13 +75,13 @@ public struct SleepAnalysis {
         self.quality = max(0, min(100, qualityScore))
         
         if self.quality >= 85 {
-            self.recommendation = "Excellent sleep! Keep you current rountine."
+            self.recommendation = "Excellent sleep! Keep your current routine."
         } else if self.quality >= 70 {
-            self.recommendation = "Good sleep. Consider clearning your bedroom environment."
+            self.recommendation = "Good sleep. Consider optimizing your bedroom environment."
         } else if self.quality >= 55 {
-            self.recommendation = "Fair sleep. Try maintaning consistent sleep times."
+            self.recommendation = "Fair sleep. Try maintaining consistent sleep times."
         } else {
-            self.recommendation = ""
+            self.recommendation = "Poor sleep quality. Review your sleep environment and schedule."
         }
     }
 }
