@@ -9,7 +9,7 @@ import Foundation
 
 final class NetworkService {
     static let shared = NetworkService()
-    public init() {}
+    private init() {}
     
     func request<T: Decodable>(_ url: URL, completion: @escaping (Result<T, Error>) -> Void) {
         let task = URLSession.shared.dataTask(with: url) { data, response, error in

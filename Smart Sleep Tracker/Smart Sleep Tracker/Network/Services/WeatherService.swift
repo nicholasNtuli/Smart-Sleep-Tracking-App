@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class WeatherService {
+public class WeatherService {
     static let shared = WeatherService()
     private init() {}
     

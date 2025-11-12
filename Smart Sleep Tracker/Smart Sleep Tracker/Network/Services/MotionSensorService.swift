@@ -10,13 +10,13 @@ import CoreMotion
 internal import Combine
 
 final class MotionSensorService: NSObject, ObservableObject {
-    @Published var accelermoterData: [AccelerometerReading] = []
+    @Published var accelerometerData: [AccelerometerReading] = []
     
     private let motionManager = CMMotionManager()
     private var motionUpdateTimer: Timer?
     
     func startTracking() {
-        guard motionManager.isAccelerometerActive else {
+        guard motionManager.isAccelerometerAvailable else {
             print("Accelerometer not available")
             return
         }
@@ -38,7 +38,9 @@ final class MotionSensorService: NSObject, ObservableObject {
                     z: data.acceleration.z
                 )
                 
-                self?.accelermoterData.append(reading)
+                DispatchQueue.main.async {
+                    self?.accelerometerData.append(reading)
+                }
             }
         }
     }
@@ -48,8 +50,8 @@ final class MotionSensorService: NSObject, ObservableObject {
         motionUpdateTimer?.invalidate()
         motionUpdateTimer = nil
         
-        let data = accelermoterData
-        accelermoterData = []
+        let data = accelerometerData
+        accelerometerData = []
         
         return data
     }
