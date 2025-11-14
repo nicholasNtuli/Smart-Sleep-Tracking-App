@@ -47,3 +47,9 @@ public struct SleepStatistics {
         self.averageDuration = durations.isEmpty ? 0 : totalDuration / Double(durations.count)
     }
 }
+
+extension SleepStatistics {
+    static var empty: SleepStatistics {
+        SleepStatistics(sessions: [])
+    }
+}

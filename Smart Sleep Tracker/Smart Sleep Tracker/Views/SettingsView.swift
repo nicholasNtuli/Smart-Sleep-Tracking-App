@@ -54,54 +54,56 @@ struct SettingsView: View {
                     }
                     
                     Section(header: SectionHeader("Sleep Statistics")) {
-                        StatisticItem(
-                            icon: <#T##String#>,
-                            label: <#T##String#>,
-                            value: <#T##String#>
-                        )
-                        .listRowBackground(Color.primary.opacity(0.05))
+                        let safeStatistics = viewModel.safeStatistics
                         
                         StatisticItem(
-                            icon: <#T##String#>,
-                            label: <#T##String#>,
-                            value: <#T##String#>
+                            icon: "percent",
+                            label: "Average Quality",
+                            value: "\(safeStatistics.averageQuality)%"
                         )
-                        .listRowBackground(Color.primary.opacity(0.05))
+                        .listRowBackground(Color.white.opacity(0.05))
                         
                         StatisticItem(
-                            icon: <#T##String#>,
-                            label: <#T##String#>,
-                            value: <#T##String#>
+                            icon: "clock.fill",
+                            label: "Average Duration",
+                            value: viewModel.formatDuration(safeStatistics.averageDuration)
                         )
-                        .listRowBackground(Color.primary.opacity(0.05))
+                        .listRowBackground(Color.white.opacity(0.05))
                         
                         StatisticItem(
-                            icon: <#T##String#>,
-                            label: <#T##String#>,
-                            value: <#T##String#>
+                            icon: "calendar",
+                            label: "Total Sessions",
+                            value: "\(safeStatistics.totalSessions)"
                         )
-                        .listRowBackground(Color.primary.opacity(0.05))
+                        .listRowBackground(Color.white.opacity(0.05))
                         
                         StatisticItem(
-                            icon: <#T##String#>,
-                            label: <#T##String#>,
-                            value: <#T##String#>
+                            icon: "star.fill",
+                            label: "Best Night",
+                            value: "\(safeStatistics.bestNightQuality)%"
                         )
-                        .listRowBackground(Color.primary.opacity(0.05))
+                        .listRowBackground(Color.white.opacity(0.05))
                         
                         StatisticItem(
-                            icon: <#T##String#>,
-                            label: <#T##String#>,
-                            value: <#T##String#>
+                            icon: "arrow.down",
+                            label: "Worst Night",
+                            value: "\(safeStatistics.worstNightQuality)%"
                         )
-                        .listRowBackground(Color.primary.opacity(0.05))
+                        .listRowBackground(Color.white.opacity(0.05))
                         
                         StatisticItem(
-                            icon: <#T##String#>,
-                            label: <#T##String#>,
-                            value: <#T##String#>
+                            icon: "moon.stars.fill",
+                            label: "Avg Deep Sleep",
+                            value: viewModel.formatPercentage(safeStatistics.averageDeepSleep)
                         )
-                        .listRowBackground(Color.primary.opacity(0.05))
+                        .listRowBackground(Color.white.opacity(0.05))
+                        
+                        StatisticItem(
+                            icon: "sparkles",
+                            label: "Avg REM Sleep",
+                            value: viewModel.formatPercentage(safeStatistics.averageREMSleep)
+                        )
+                        .listRowBackground(Color.white.opacity(0.05))
                     }
                     
                     if viewModel.isTracking {
@@ -142,7 +144,7 @@ struct SettingsView: View {
                             HStack {
                                 Text("SDK Version")
                                     .font(.system(size: 13, weight: .regular))
-                                    .foregroundStyle(.primary.opacity(0.06))
+                                    .foregroundStyle(.primary.opacity(0.6))
                                 
                                 Spacer()
                                 

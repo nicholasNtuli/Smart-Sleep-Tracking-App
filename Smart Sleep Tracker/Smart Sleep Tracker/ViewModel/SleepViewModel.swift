@@ -36,6 +36,10 @@ final class SleepViewModel: NSObject, ObservableObject, SleepSDKDelegate, CLLoca
     private var locationManager = CLLocationManager()
     private var currentLocation: CLLocationCoordinate2D?
     
+    var safeStatistics: SleepStatistics {
+        statistics ?? SleepStatistics.empty
+    }
+    
     override init() {
         self.statistics = SleepStatistics(sessions: [])
         self.sdk = SleepSDK.shared
