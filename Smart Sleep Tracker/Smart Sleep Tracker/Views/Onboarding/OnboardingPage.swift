@@ -13,36 +13,49 @@ struct OnboardingPage: View {
     let imageName: String
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .topLeading) {
             Image(imageName)
                 .resizable()
                 .scaledToFill()
-                .ignoresSafeArea()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .ignoresSafeArea(.all)
             
-            VStack(alignment: .leading, spacing: 12) {
-                Text(title)
-                    .font(.largeTitle)
-                    .bold()
-                    .foregroundColor(.white)
+            VStack(alignment: .leading, spacing: 0) {
+                Spacer().frame(height: 80)
                 
-                Text(subtitle)
-                    .font(.body)
-                    .foregroundColor(.white.opacity(0.9))
-                    .multilineTextAlignment(.leading)
-                    .lineLimit(3)
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(title)
+                        .font(.system(size: 34, weight: .bold))
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.leading)
+                        .lineLimit(2)
+                        .frame(height: 85, alignment: .topLeading)
+                    
+                    Text(subtitle)
+                        .font(.subheadline)
+                        .foregroundColor(.white.opacity(0.8))
+                        .multilineTextAlignment(.leading)
+                        .lineLimit(3)
+                    
+                    HStack(spacing: 6) {
+                        Circle().frame(width: 8, height: 8).foregroundColor(.white.opacity(0.9))
+                        Circle().frame(width: 6, height: 6).foregroundColor(.white.opacity(0.3))
+                        Circle().frame(width: 6, height: 6).foregroundColor(.white.opacity(0.3))
+                    }
+                    .padding(.top, 4)
+                }
+                .padding(.horizontal, 50)
                 
-                Spacer()
                 Spacer()
             }
-            .padding(.top, 50)
         }
     }
 }
 
 #Preview {
     OnboardingPage(
-        title: "Track Your Sleep",
-        subtitle: "Understand your patterns and improve your rest with insights and gentle reminders.",
+        title: "Proven\nTechniques",
+        subtitle: "Effective solutions for restful nights for the whole family.",
         imageName: "OnboardingPart2"
     )
 }
