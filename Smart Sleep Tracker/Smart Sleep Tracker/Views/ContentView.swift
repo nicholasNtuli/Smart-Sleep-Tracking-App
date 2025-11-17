@@ -9,9 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var viewModel = SleepViewModel()
+    @StateObject private var appState = AppState()
     @State private var showSettings = false
     
     var body: some View {
+        Group {
+            if !appState.hasSeenOnboarding {
+                OnboardingView(hasSeenOnboarding: $appState.hasSeenOnboarding)
+            } else {
+                MainAppView
+            }
+        }
+    }
+    
+    var MainAppView: some View {
         ZStack {
             LinearGradient(
                 gradient: Gradient(colors: [
@@ -57,6 +68,7 @@ struct ContentView: View {
         } message: {
             Text(viewModel.errorMessage)
         }
+
     }
 }
 
