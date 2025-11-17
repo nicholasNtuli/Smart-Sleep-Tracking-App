@@ -29,9 +29,22 @@
 		5817F00F2EBB3E0F0082FE1B /* Smart Sleep TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Smart Sleep TrackerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		58C0EC4A2EC76E3D00227A60 /* Exceptions for "Smart Sleep Tracker" folder in "Smart Sleep Tracker" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Smart-Sleep-Tracker-Info.plist",
+			);
+			target = 5817EFF72EBB3E0D0082FE1B /* Smart Sleep Tracker */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		5817EFFA2EBB3E0D0082FE1B /* Smart Sleep Tracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				58C0EC4A2EC76E3D00227A60 /* Exceptions for "Smart Sleep Tracker" folder in "Smart Sleep Tracker" target */,
+			);
 			path = "Smart Sleep Tracker";
 			sourceTree = "<group>";
 		};
@@ -397,14 +410,21 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GNWJZ9ZPJP;
+				DEVELOPMENT_TEAM = 69XM53S226;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Smart-Sleep-Tracker-Info.plist";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "We read your sleep data from Health to provide insights";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We save your sleep analysis to Health for integration with other apps";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to fetch local weather data for accurate sleep analysis";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We use your microphone to analyze your breathing patterns during sleep";
+				INFOPLIST_KEY_NSMotionUsageDescription = "We use your phone's motion sensors to detect sleep patterns";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -429,14 +449,21 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GNWJZ9ZPJP;
+				DEVELOPMENT_TEAM = 69XM53S226;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Smart-Sleep-Tracker-Info.plist";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "We read your sleep data from Health to provide insights";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We save your sleep analysis to Health for integration with other apps";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to fetch local weather data for accurate sleep analysis";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We use your microphone to analyze your breathing patterns during sleep";
+				INFOPLIST_KEY_NSMotionUsageDescription = "We use your phone's motion sensors to detect sleep patterns";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

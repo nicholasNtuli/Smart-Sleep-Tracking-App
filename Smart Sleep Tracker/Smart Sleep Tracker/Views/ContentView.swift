@@ -31,7 +31,7 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                if !viewModel.isTracking {
+                if viewModel.isTracking {
                     TrackingView(viewModel: viewModel)
                 } else if let lastAnalysis = viewModel.lastAnalysis {
                     AnalsisView(viewModel: viewModel, analysis: lastAnalysis)
@@ -52,7 +52,7 @@ struct ContentView: View {
         .onAppear {
             viewModel.startTimeUpdate()
         }
-        .alert("Error", isPresented: $showSettings) {
+        .alert("Error", isPresented: $viewModel.showError) {
             Button("OK") { viewModel.showError = false }
         } message: {
             Text(viewModel.errorMessage)

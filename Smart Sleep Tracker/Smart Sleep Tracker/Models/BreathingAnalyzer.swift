@@ -37,7 +37,7 @@ public class BreathingAnalyzer {
         return breathingReadings
     }
 
-    /// Estimates a person’s breathing rate (in breaths per minute)
+    /// Estimates a person's breathing rate (in breaths per minute)
     /// From a short audio sample by analyzing its dominant low-frequency pattern.
     private func extractBreathingFrequency(_ audioArray: [Float]) -> Double {
         // Make sure the signal length fits an FFT
@@ -138,4 +138,3 @@ public class BreathingAnalyzer {
         return Double(maxValue)
     }
 }
-

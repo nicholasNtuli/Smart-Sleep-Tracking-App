@@ -18,6 +18,7 @@ struct AnalsisView: View {
                     Circle()
                         .stroke(Color.green.opacity(0.2), lineWidth: 12)
                     
+                    
                     Circle()
                         .trim(from: 0, to: CGFloat(analysis.quality) / 100)
                         .stroke(

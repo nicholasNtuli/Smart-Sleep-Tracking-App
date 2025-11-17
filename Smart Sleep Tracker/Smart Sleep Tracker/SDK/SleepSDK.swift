@@ -140,8 +140,7 @@ public final class SleepSDK: NSObject {
             case .success(let environmentalData):
                 self?.currentSession?.environmentalData = environmentalData
                 self?.sessionDelegate?.sleepSDK(self ?? SleepSDK.shared, didUpdateEnvironmentalData: environmentalData)
-                print("Weather data fetched \(environmentalData)°C")
-                
+                print("Weather data fetched \(environmentalData.temperature)°C")
             case .failure(let error):
                 print("Weather fetch error \(error)")
             }
@@ -173,4 +172,3 @@ public final class SleepSDK: NSObject {
         }
     }
 }
-

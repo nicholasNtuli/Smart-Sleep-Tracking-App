@@ -19,7 +19,7 @@ final class SleepViewModel: NSObject, ObservableObject, SleepSDKDelegate, CLLoca
     @Published var sessionDuration = ""
     @Published var currentSessionInfo = ""
     @Published var lastAnalysis: SleepAnalysis?
-    @Published var statistics: SleepStatistics?
+    @Published var statistics: SleepStatistics = .empty
     @Published var currentTemperature: Double?
     @Published var sleepStage: [SleepStageData] = []
     @Published var deepSleepPercent: Double = 0
@@ -37,7 +37,7 @@ final class SleepViewModel: NSObject, ObservableObject, SleepSDKDelegate, CLLoca
     private var currentLocation: CLLocationCoordinate2D?
     
     var safeStatistics: SleepStatistics {
-        statistics ?? SleepStatistics.empty
+        statistics
     }
     
     override init() {
@@ -48,6 +48,7 @@ final class SleepViewModel: NSObject, ObservableObject, SleepSDKDelegate, CLLoca
         
         self.sdk.setDelegate(self)
         setUpLocationManager()
+        updateTime()
     }
     
     private func setUpLocationManager() {
@@ -57,15 +58,15 @@ final class SleepViewModel: NSObject, ObservableObject, SleepSDKDelegate, CLLoca
         self.locationManager.startUpdatingLocation()
     }
     
+    @objc private func handleTimerTick() {
+        updateTime()
+    }
+    
     func startTimeUpdate() {
         // Use target/selector to avoid capturing `self` in a @Sendable closure
         timer?.invalidate()
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(handleTimerTick), userInfo: nil, repeats: true)
         RunLoop.main.add(timer!, forMode: .common)
-    }
-    
-    @objc private func handleTimerTick() {
-        updateTime()
     }
     
     private func updateTime() {

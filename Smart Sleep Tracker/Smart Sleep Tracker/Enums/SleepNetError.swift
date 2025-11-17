@@ -20,7 +20,7 @@ enum SleepNetError: Error, LocalizedError {
         case .requestFailed:
             return "Request failed"
         case .decodingError:
-            return "Failed toecoding error"
+            return "Failed to decode error"
         case .noData:
             return "No data found"
         }
