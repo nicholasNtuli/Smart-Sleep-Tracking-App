@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct OnboardingPage: View {
+    @State private var currentPageIndex = 0
+    private let totalPages = 3
     let title: String
     let subtitle: String
     let imageName: String
@@ -33,16 +35,10 @@ struct OnboardingPage: View {
                     
                     Text(subtitle)
                         .font(.subheadline)
-                        .foregroundColor(.white.opacity(0.8))
+                        .foregroundColor(.white.opacity(0.7))
                         .multilineTextAlignment(.leading)
                         .lineLimit(3)
                     
-                    HStack(spacing: 6) {
-                        Circle().frame(width: 8, height: 8).foregroundColor(.white.opacity(0.9))
-                        Circle().frame(width: 6, height: 6).foregroundColor(.white.opacity(0.3))
-                        Circle().frame(width: 6, height: 6).foregroundColor(.white.opacity(0.3))
-                    }
-                    .padding(.top, 4)
                 }
                 .padding(.horizontal, 50)
                 
@@ -56,6 +52,6 @@ struct OnboardingPage: View {
     OnboardingPage(
         title: "Proven\nTechniques",
         subtitle: "Effective solutions for restful nights for the whole family.",
-        imageName: "OnboardingPart2"
+        imageName: "OnboardingPart6"
     )
 }

@@ -22,7 +22,6 @@ struct OnboardingView: View {
     var body: some View {
         Group {
             if viewState == .welcome {
-                // MARK: Welcome Screen (Page 0)
                 WelcomeView(
                     title: "Your key to getting \nSleep better",
                     subtitle: "Peaceful nights start here!",
@@ -45,8 +44,8 @@ struct OnboardingView: View {
                         
                         OnboardingPage(
                             title: "Personalised\nApproach",
-                            subtitle: "Customise sleep routine tailored to your body's specific needs.",
-                            imageName: "OnboardingPart3"
+                            subtitle: "Science-based methods for healthy sleep\nhabits and lasting rest",
+                            imageName: "OnboardingPart6"
                         )
                         .tag(1)
                         
@@ -58,10 +57,21 @@ struct OnboardingView: View {
                         .tag(2)
                         .tag(2)
                     }
-                    .tabViewStyle(.page(indexDisplayMode: .always))
+                    .tabViewStyle(.page(indexDisplayMode: .never))
                     .ignoresSafeArea()
                     
-                    VStack {
+                    VStack(spacing: 0) {
+                        Spacer()
+                        
+                        HStack {
+                            CustomPageControl(currentPage: $currentPageIndex, totalPages: totalPages)
+                                .padding(.top, 16)
+                                .padding(.bottom, 95)
+                            
+                            Spacer()
+                        }
+                        
+                        Spacer()
                         Spacer()
                         
                         Group {
