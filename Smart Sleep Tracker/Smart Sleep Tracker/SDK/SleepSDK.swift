@@ -27,6 +27,7 @@ public final class SleepSDK: NSObject {
     public override init() {
         super.init()
         requestHealthKitPermissions()
+        motionService.requestMotionPermission()
     }
     
     public func setDelegate(_ delegate: SleepSDKDelegate) {

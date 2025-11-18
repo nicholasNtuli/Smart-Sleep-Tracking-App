@@ -13,8 +13,27 @@ final class MotionSensorService: NSObject, ObservableObject {
     @Published var accelerometerData: [AccelerometerReading] = []
     
     private let motionManager = CMMotionManager()
+    private let activityManager = CMMotionActivityManager()
     private var motionUpdateTimer: Timer?
     
+    public func requestMotionPermission() {
+        guard CMMotionActivityManager.isActivityAvailable() else {
+            print("Activity not available on this device")
+            return
+        }
+        
+        activityManager.queryActivityStarting(from: Date().addingTimeInterval(-60), to: Date(), to: .main) { activities, error in
+            if let nsError = error as NSError? {
+                if nsError.code == Int(CMErrorMotionActivityNotAuthorized.rawValue) {
+                    print("Motion Permission Not Authorized")
+                } else {
+                    print("CMMotionActivityManager error: \(nsError.localizedDescription)")
+                }
+            } else {
+                print("CMMotionActivityManager query succeeded. Permission granted.")
+            }
+        }
+    }
     func startTracking() {
         guard motionManager.isAccelerometerAvailable else {
             print("Accelerometer not available")
@@ -57,4 +76,3 @@ final class MotionSensorService: NSObject, ObservableObject {
         return data
     }
 }
-

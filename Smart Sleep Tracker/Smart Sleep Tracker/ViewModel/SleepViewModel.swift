@@ -193,6 +193,14 @@ final class SleepViewModel: NSObject, ObservableObject, SleepSDKDelegate, CLLoca
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
         print("Location error: \(error)")
+        
+        if let clError = error as? CLError, clError.code == .denied {
+            if manager.authorizationStatus == .notDetermined {
+                print("Ignoring first location failure")
+                return
+            }
+        }
+        
         showError = true
         errorMessage = "Failed to get location"
     }
