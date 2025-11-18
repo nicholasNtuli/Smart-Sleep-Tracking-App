@@ -29,22 +29,9 @@
 		5817F00F2EBB3E0F0082FE1B /* Smart Sleep TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Smart Sleep TrackerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		58C0EC4A2EC76E3D00227A60 /* Exceptions for "Smart Sleep Tracker" folder in "Smart Sleep Tracker" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"Smart-Sleep-Tracker-Info.plist",
-			);
-			target = 5817EFF72EBB3E0D0082FE1B /* Smart Sleep Tracker */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		5817EFFA2EBB3E0D0082FE1B /* Smart Sleep Tracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				58C0EC4A2EC76E3D00227A60 /* Exceptions for "Smart Sleep Tracker" folder in "Smart Sleep Tracker" target */,
-			);
 			path = "Smart Sleep Tracker";
 			sourceTree = "<group>";
 		};
@@ -408,9 +395,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Smart Sleep Tracker/Smart Sleep Tracker.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 69XM53S226;
+				DEVELOPMENT_TEAM = C536ZDY26W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Smart-Sleep-Tracker-Info.plist";
@@ -447,9 +435,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Smart Sleep Tracker/Smart Sleep Tracker.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 69XM53S226;
+				DEVELOPMENT_TEAM = C536ZDY26W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Smart-Sleep-Tracker-Info.plist";
