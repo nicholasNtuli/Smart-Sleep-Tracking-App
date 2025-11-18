@@ -21,6 +21,7 @@ final class MotionSensorService: NSObject, ObservableObject {
             return
         }
         
+        motionManager.showsDeviceMovementDisplay = true
         motionManager.accelerometerUpdateInterval = 0.5
         motionManager.startAccelerometerUpdates()
         
@@ -56,3 +57,4 @@ final class MotionSensorService: NSObject, ObservableObject {
         return data
     }
 }
+

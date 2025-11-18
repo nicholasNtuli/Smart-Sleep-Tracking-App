@@ -124,13 +124,13 @@ public final class SleepSDK: NSObject {
     }
     
     private func stopAudioBreathingAnalysis() {
-        let audioSession = AVAudioSession.sharedInstance()
-        
         do {
+            let audioSession = AVAudioSession.sharedInstance()
+            try audioSession.setCategory(.record, mode: .measurement, options: [.allowBluetoothA2DP, .mixWithOthers])
             try audioSession.setActive(false, options: .notifyOthersOnDeactivation)
             print("Audio session stopped")
         } catch {
-            print("Audio session deactivation faled \(error)")
+            print("Audio session deactivation failed \(error)")
         }
     }
     
@@ -172,3 +172,4 @@ public final class SleepSDK: NSObject {
         }
     }
 }
+
